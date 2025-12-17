@@ -42,7 +42,7 @@ import pandas as pd
 import streamlit as st
 import pandas as pd
 
-st.subheader("Dataset Selection")
+st.caption("Dataset Selection")
 
 # Tabs
 tab1, tab2 = st.tabs(["Data Input", "Data Preview"])
@@ -101,6 +101,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
