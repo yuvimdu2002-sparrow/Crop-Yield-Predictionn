@@ -1,3 +1,39 @@
+import base64
+import streamlit as st
+
+with open("background.jpg", "rb") as f:
+    encoded = base64.b64encode(f.read()).decode()
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+import streamlit as st
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://images.unsplash.com/photo-1523741543316-beb7fc7023d8");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 import streamlit as st
 import numpy as np
 import joblib
@@ -41,5 +77,6 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('###Predicted Yield')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
