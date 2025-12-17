@@ -14,7 +14,7 @@ scaler=joblib.load("scale.pkl")
 
 st.title("ASMLY App")
 
-st.write("Crop Yield Prediction")
+st.write("🌾 Crop Yield Prediction")
 
 st.sidebar.write("Input Parameter")
 Soil_Type=st.sidebar.selectbox("1.Type of the soil: ",['Chalky','Clay','Loam','Peaty','Sandy','Silt']).strip().capitalize()
@@ -41,4 +41,5 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('###Predicted Yield')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
