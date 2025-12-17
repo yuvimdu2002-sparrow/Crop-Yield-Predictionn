@@ -13,7 +13,7 @@ Fertilizer_enc=joblib.load("fertilizer_enc.pkl")
 Irrigation_enc=joblib.load("irrigation_enc.pkl")
 scaler=joblib.load("scale.pkl")
 
-st.markdown("<h1 style='text-align:center;>ASMLY App</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>ASMLY App</h1>", unsafe_allow_html=True)
 
 st.subheader("🌾 Crop Yield Prediction")
 
@@ -101,6 +101,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
