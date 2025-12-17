@@ -16,4 +16,3 @@ After training, the model is saved as Crop_model.h5 and can be reloaded later fo
 
 This project demonstrates a complete end-to-end machine learning workflow, including data preprocessing, visualization, model building, evaluation, and deployment-ready prediction logic. Future improvements may include using one-hot encoding for categorical variables, experimenting with other machine learning models such as Random Forest or XGBoost, performing hyperparameter tuning, and deploying the model as a web application using Flask or Streamlit.
 
-Author: Yuvaraj A
