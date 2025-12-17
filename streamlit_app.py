@@ -30,8 +30,9 @@ if option == "Upload CSV":
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
         st.success("Uploaded successfully")
+        st.dataframe(df)
 else:
-    df = pd.read_csv("sample_data.csv")
+    df = pd.read_csv("crop_yield.csv")
     st.info("Using sample dataset")
     st.dataframe(df)
         
@@ -78,6 +79,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
