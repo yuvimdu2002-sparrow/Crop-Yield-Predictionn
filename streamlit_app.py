@@ -17,24 +17,43 @@ def add_bg_from_local(image_file):
     )
 
 add_bg_from_local("background.jpg")  # correct path here
+import pandas as pd
+
 import streamlit as st
 import pandas as pd
 
-option = st.radio(
-    "Choose data source",
-    ["Upload CSV", "Use sample data"]
-)
+st.title("Dataset Selection")
 
-if option == "Upload CSV":
-    uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
-    if uploaded_file:
-        df = pd.read_csv(uploaded_file)
-        st.success("Uploaded successfully")
+# Tabs
+tab1, tab2 = st.tabs(["Data Input", "Data Preview"])
+
+with tab1:
+    option = st.radio(
+        "Choose data source",
+        ["Upload CSV", "Use sample data"]
+    )
+
+    df = None
+
+    if option == "Upload CSV":
+        uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+            st.success("Uploaded successfully ✅")
+
+    else:
+        try:
+            df = pd.read_csv("sample_data.csv")
+            st.info("Using sample dataset 📄")
+        except FileNotFoundError:
+            st.error("sample_data.csv not found")
+
+with tab2:
+    st.subheader("Dataset Preview")
+    if df is not None:
         st.dataframe(df)
-else:
-    df = pd.read_csv("crop_yield.csv")
-    st.info("Using sample dataset")
-    st.dataframe(df)
+    else:
+        st.warning("No data loaded yet")
         
 import streamlit as st
 import numpy as np
@@ -79,6 +98,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
