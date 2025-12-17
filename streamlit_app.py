@@ -58,8 +58,9 @@ scaledin_data=scaler.transform(input_data)
 
 if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
-  st.write('###Predicted Yield')
+  st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
