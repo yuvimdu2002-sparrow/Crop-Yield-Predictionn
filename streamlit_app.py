@@ -1,3 +1,23 @@
+        
+import streamlit as st
+import numpy as np
+import joblib
+from sklearn.preprocessing import LabelEncoder
+from tensorflow.keras.models import load_model
+
+model=load_model("Crop_model.h5",compile=False)
+Soil_enc=joblib.load("soil_enc.pkl")
+Crop_enc=joblib.load("crop_enc.pkl")
+Weather_enc=joblib.load("weather_en.pkl")
+Fertilizer_enc=joblib.load("fertilizer_enc.pkl")
+Irrigation_enc=joblib.load("irrigation_enc.pkl")
+scaler=joblib.load("scale.pkl")
+
+st.markdown("<h1 style='text-align:center;>ASMLY App</h1>", unsafe_allow_html=True)
+
+st.subheader("🌾 Crop Yield Prediction")
+
+
 import base64
 import streamlit as st
 
@@ -22,7 +42,7 @@ import pandas as pd
 import streamlit as st
 import pandas as pd
 
-st.title("Dataset Selection")
+st.subheader("Dataset Selection")
 
 # Tabs
 tab1, tab2 = st.tabs(["Data Input", "Data Preview"])
@@ -54,24 +74,7 @@ with tab2:
         st.dataframe(df)
     else:
         st.warning("No data loaded yet")
-        
-import streamlit as st
-import numpy as np
-import joblib
-from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras.models import load_model
 
-model=load_model("Crop_model.h5",compile=False)
-Soil_enc=joblib.load("soil_enc.pkl")
-Crop_enc=joblib.load("crop_enc.pkl")
-Weather_enc=joblib.load("weather_en.pkl")
-Fertilizer_enc=joblib.load("fertilizer_enc.pkl")
-Irrigation_enc=joblib.load("irrigation_enc.pkl")
-scaler=joblib.load("scale.pkl")
-
-st.title("ASMLY App")
-
-st.write("🌾 Crop Yield Prediction")
 
 st.sidebar.write("Input Parameter")
 Soil_Type=st.sidebar.selectbox("1.Type of the soil: ",['Chalky','Clay','Loam','Peaty','Sandy','Silt']).strip().capitalize()
@@ -98,6 +101,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
