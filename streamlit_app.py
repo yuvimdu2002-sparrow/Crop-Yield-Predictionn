@@ -20,13 +20,20 @@ add_bg_from_local("background.jpg")  # correct path here
 import streamlit as st
 import pandas as pd
 
-use_upload = st.toggle("Enable file upload")
+option = st.radio(
+    "Choose data source",
+    ["Upload CSV", "Use sample data"]
+)
 
-if use_upload:
+if option == "Upload CSV":
     uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
-        st.dataframe(df)
+        st.success("Uploaded successfully")
+else:
+    df = pd.read_csv("sample_data.csv")
+    st.info("Using sample dataset")
+    st.dataframe(df)
         
 import streamlit as st
 import numpy as np
@@ -71,6 +78,7 @@ if st.button("Predict"):
   pred=model.predict(scaledin_data)[0]
   st.write('Predicted Yield 🌽🧺')
   st.metric(label="Yield (tons Per Hectare)",value=f"{pred[0]:.3f}")
+
 
 
 
