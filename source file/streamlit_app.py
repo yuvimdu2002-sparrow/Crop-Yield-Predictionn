@@ -36,7 +36,7 @@ def add_bg_from_local(image_file):
         unsafe_allow_html=True
     )
 
-add_bg_from_local("background.jpg")  # correct path here
+add_bg_from_local("data/background.jpg")  # correct path here
 import pandas as pd
 
 import streamlit as st
