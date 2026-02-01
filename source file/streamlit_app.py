@@ -5,13 +5,13 @@ import joblib
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
 
-model=load_model("Crop_model.h5",compile=False)
-Soil_enc=joblib.load("soil_enc.pkl")
-Crop_enc=joblib.load("crop_enc.pkl")
-Weather_enc=joblib.load("weather_en.pkl")
-Fertilizer_enc=joblib.load("fertilizer_enc.pkl")
-Irrigation_enc=joblib.load("irrigation_enc.pkl")
-scaler=joblib.load("scale.pkl")
+model=load_model("model/Crop_model.h5",compile=False)
+Soil_enc=joblib.load("model/soil_enc.pkl")
+Crop_enc=joblib.load("model/crop_enc.pkl")
+Weather_enc=joblib.load("model/weather_en.pkl")
+Fertilizer_enc=joblib.load("model/fertilizer_enc.pkl")
+Irrigation_enc=joblib.load("model/irrigation_enc.pkl")
+scaler=joblib.load("model/scale.pkl")
 
 st.markdown("<h1 style='text-align:center;'>ASMLY App</h1>", unsafe_allow_html=True)
 
