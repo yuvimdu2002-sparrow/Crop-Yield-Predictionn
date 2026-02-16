@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-df=pd.read_csv("/content/drive/MyDrive/crop_yield.csv")
+df=pd.read_csv("data/crop_yield.csv")
 df.shape
 data=df.head(20000)
 print(data)
@@ -87,9 +87,9 @@ loss, r2_score, mae = model.evaluate(x_test_scaled, y_test)
 print(f"MAE: {mae:.2f}%")
 print(f"R2_score: {r2_score:.2f}%")
 
-model.save("/content/drive/MyDrive/Colab Notebooks/Crop_model.h5")
+model.save("model/Crop_model.h5")
 from tensorflow.keras.models import load_model
-model = load_model("/content/drive/MyDrive/Colab Notebooks/Crop_model.h5", compile=False)
+model = load_model("model/Crop_model.h5", compile=False)
 
 
 compare=pd.DataFrame({'actual':y_test, 'predicted':model.predict(x_test_scaled).flatten()})
